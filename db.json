@@ -1,0 +1,15 @@
+{
+  "motors": [
+    {
+      "id": 1,
+      "name": "Yamaha",
+      "year": 2023
+    },
+    {
+      "id": 2,
+      "name": "Suzuki",
+      "year": 2021
+    }
+  ],
+  "user": []
+}

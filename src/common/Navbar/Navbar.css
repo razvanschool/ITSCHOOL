@@ -1,0 +1,95 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  font-weight: 500;
+  position: relative;
+  height: 60px;
+  padding: 4px 24px;
+}
+
+.nav-guest {
+  background: #2f718b;
+}
+
+.nav-admin {
+  background: #a19f9f;
+}
+
+.nav-logo {
+  height: 100%;
+  border-radius: 50%;
+  margin-left: 24px;
+}
+
+.nav-logo-dropdown {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: auto;
+  bottom: 0;
+}
+
+.nav-rute-mobile {
+  font-size: large;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background: #a19f9f;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 100vh;
+}
+
+.nav-ruta-mobile:hover {
+  background: #eeaf7f;
+}
+
+.nav-ruta {
+  padding: 8px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.nav-dropdown {
+  width: 100px;
+  height: 40px;
+  color: rgb(0, 0, 0);
+  background: transparent;
+  padding: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.nav-dropdown:hover {
+  background: rgb(187, 186, 185);
+}
+
+.nav-rute-desktop {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%;
+}
+
+.nav-ruta-desktop {
+  margin-left: 16px;
+}
+
+@media screen and (max-width: 900px) {
+  .nav-rute-desktop {
+    display: none;
+  }
+}
+@media only screen and (min-width: 900px) {
+  .nav-rute-mobile {
+    display: none;
+  }
+  .nav-dropdown {
+    display: none;
+  }
+}
