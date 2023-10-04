@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Navbar.css";
 import style from "./Navbar.module.css";
 import { Title } from "./Navbar.style";
+import { Link } from "react-router-dom";
 
 function Navbar({ isGuest, logo, rute }) {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -13,9 +14,13 @@ function Navbar({ isGuest, logo, rute }) {
       {showDropdown && (
         <div className="nav-rute nav-rute-mobile">
           {rute?.map((ruta, index) => (
-            <div className="nav-ruta nav-ruta-mobile" key={ruta + index}>
-              {ruta}
-            </div>
+            <Link
+              to={ruta.ruta}
+              className="nav-ruta nav-ruta-mobile"
+              key={ruta + index}
+            >
+              {ruta.name}
+            </Link>
           ))}
           <img src={logo} alt="Logo" className="nav-logo-dropdown" />
         </div>
@@ -23,9 +28,9 @@ function Navbar({ isGuest, logo, rute }) {
 
       <div className="nav-rute nav-rute-desktop">
         {rute?.map((ruta, index) => (
-          <div className="nav-ruta-desktop" key={ruta + index}>
-            {ruta}
-          </div>
+          <Link to={ruta.ruta} className="nav-ruta-desktop" key={ruta + index}>
+            {ruta.name}
+          </Link>
         ))}
       </div>
 

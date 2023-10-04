@@ -11,5 +11,16 @@
       "year": 2021
     }
   ],
-  "user": []
+  "user": [
+    {
+      "id": 1,
+      "name": "Razvan",
+      "year": 1998
+    },
+    {
+      "id": 2,
+      "name": "Mihai",
+      "year": 2000
+    }
+  ]
 }

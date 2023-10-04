@@ -5,6 +5,15 @@ import { ruteGuest } from "../constants/rute";
 import Motos from "./Motos/Motos";
 
 const HomeGuest = ({ children }) => {
+  //Exemplu de functie ce returneaza html
+  // const functionArr = (arr) => {
+  //   if (arr.length < 99) {
+  //     return <p>99+</p>;
+  //   } else return <p>{arr.length}</p>;
+  // };
+
+  // const arr = [1, 2, 3];
+
   return (
     <div
       style={{
@@ -17,9 +26,10 @@ const HomeGuest = ({ children }) => {
         logo="https://static.vecteezy.com/system/resources/thumbnails/011/161/739/small/motorcycles-logo-design-template-vector.jpg"
         rute={ruteGuest}
       />
-      <div>
-        <Motos />
-      </div>
+
+      {/* Exemplu de functie ce returneaza html */}
+      {/* {functionArr(arr)} */}
+      <Motos />
       <Footer />
     </div>
   );

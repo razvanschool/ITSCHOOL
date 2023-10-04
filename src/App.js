@@ -7,7 +7,7 @@ function App() {
   return (
     <Routes>
       <Route path="/admin" element={<HomeAdmin />} />
-      <Route path="/guest" element={<HomeGuest />} />
+      <Route path="/moto/:id" element={<HomeGuest />} />
       <Route path="/" element={<HomeGuest />} />
     </Routes>
   );
