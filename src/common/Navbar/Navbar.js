@@ -1,46 +1,39 @@
 import { useState } from "react";
-import "./Navbar.css";
-import style from "./Navbar.module.css";
-import { Title } from "./Navbar.style";
-import { Link } from "react-router-dom";
 
-function Navbar({ isGuest, logo, rute }) {
+import {
+  DropdownBurger,
+  LinkCostumDesktop,
+  Logo,
+  NavContainerRuteDesktop,
+  NavbarContainer,
+  Title,
+} from "./Navbar.style";
+
+import Rute from "./RuteMobile";
+
+function Navbar({ isGuest, logo, rute, numeUser }) {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
-    <div className={style.nav + ` ${isGuest ? "nav-guest" : "nav-admin"}`}>
-      <img src={logo} alt="Logo" className="nav-logo" />
-      <Title>TEST</Title>
-      {showDropdown && (
-        <div className="nav-rute nav-rute-mobile">
-          {rute?.map((ruta, index) => (
-            <Link
-              to={ruta.ruta}
-              className="nav-ruta nav-ruta-mobile"
-              key={ruta + index}
-            >
-              {ruta.name}
-            </Link>
-          ))}
-          <img src={logo} alt="Logo" className="nav-logo-dropdown" />
-        </div>
-      )}
+    <NavbarContainer isGuest={isGuest}>
+      <Logo src={logo} alt="Logo" />
 
-      <div className="nav-rute nav-rute-desktop">
+      <Title>MotoIT</Title>
+
+      {showDropdown && <Rute numeUser={numeUser} rute={rute} logo={logo} />}
+
+      <NavContainerRuteDesktop>
         {rute?.map((ruta, index) => (
-          <Link to={ruta.ruta} className="nav-ruta-desktop" key={ruta + index}>
+          <LinkCostumDesktop to={ruta.ruta} key={ruta + index}>
             {ruta.name}
-          </Link>
+          </LinkCostumDesktop>
         ))}
-      </div>
+      </NavContainerRuteDesktop>
 
-      <button
-        onClick={() => setShowDropdown(!showDropdown)}
-        className="nav-dropdown"
-      >
+      <DropdownBurger onClick={() => setShowDropdown(!showDropdown)}>
         &#9776;
-      </button>
-    </div>
+      </DropdownBurger>
+    </NavbarContainer>
   );
 }
 

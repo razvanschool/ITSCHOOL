@@ -1,8 +1,9 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ setNumeUser, numeUser }) => {
   return (
     <div
+      onClick={() => setNumeUser("Mihai")}
       className="footer"
       style={{
         backgroundColor: "#333",
@@ -13,6 +14,7 @@ const Footer = () => {
         width: "100%",
       }}
     >
+      {numeUser}
       <img
         src="https://static.vecteezy.com/system/resources/thumbnails/011/161/739/small/motorcycles-logo-design-template-vector.jpg"
         alt="MotoProject Logo"
