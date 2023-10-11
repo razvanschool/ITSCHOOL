@@ -5,7 +5,7 @@ import { ruteAdmin } from "../constants/rute";
 import { useState } from "react";
 import Motos from "../common/Motos/Motos";
 
-const HomeAdmin = ({ children }) => {
+const HomeAdmin = () => {
   const [numeUser, setNumeUser] = useState("Razvan");
 
   return (
@@ -17,7 +17,6 @@ const HomeAdmin = ({ children }) => {
     >
       <Navbar
         numeUser={numeUser}
-        isGuest={false}
         logo="https://static.vecteezy.com/system/resources/thumbnails/011/161/739/small/motorcycles-logo-design-template-vector.jpg"
         rute={ruteAdmin}
       />
