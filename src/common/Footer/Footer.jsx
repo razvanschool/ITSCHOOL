@@ -12,6 +12,7 @@ const Footer = ({ setNumeUser, numeUser }) => {
         position: "fixed",
         bottom: "0",
         width: "100%",
+        zIndex: 100,
       }}
     >
       {numeUser}

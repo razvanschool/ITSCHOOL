@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { Link, useParams } from "react-router-dom";
 import { ruteAdmin } from "../../constants/rute";
@@ -7,11 +7,16 @@ import Navbar from "../Navbar/Navbar";
 import { Button, Card, Modal } from "react-bootstrap";
 import { ContainerMoto } from "./Motos.style";
 
+import { MotoContext } from "../../store/Motos/context";
+import { deleteMotoAction, deleteReset } from "../../store/Motos/actions";
+
 const Moto = () => {
   const { id } = useParams();
   const [moto, setMoto] = useState();
 
   const [showModal, setShowModal] = useState(false);
+
+  const { stateGlobal, dispatch } = useContext(MotoContext);
 
   useEffect(() => {
     if (id) {
@@ -24,24 +29,13 @@ const Moto = () => {
           console.log("Error", error);
         });
     }
-  }, [id]);
+    const actionOfreset = deleteReset(id, dispatch);
+    dispatch(actionOfreset);
+  }, [id, dispatch]);
 
   const deleteMoto = () => {
-    fetch(`http://localhost:3002/motors/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then(() => {
-        window.location.href = "/home";
-        setShowModal(false);
-      })
-      .catch((error) => {
-        setShowModal(false);
-        console.error("Error:", error);
-      });
+    const actionOfDelete = deleteMotoAction(id, dispatch);
+    dispatch(actionOfDelete);
   };
 
   return (
@@ -70,11 +64,17 @@ const Moto = () => {
       </ContainerMoto>
       <Footer />
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal
+        show={showModal && !stateGlobal.isDeleted}
+        onHide={() => setShowModal(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Delete</Modal.Title>
         </Modal.Header>
         <Modal.Body>Are you sure?!</Modal.Body>
+        {stateGlobal.deleteMessageFail && (
+          <Modal.Body>{stateGlobal.deleteMessageFail}</Modal.Body>
+        )}
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Close

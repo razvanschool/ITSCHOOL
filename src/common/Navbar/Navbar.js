@@ -11,9 +11,8 @@ import {
 
 import Rute from "./RuteMobile";
 
-function Navbar({  logo, rute, numeUser }) {
+function Navbar({ logo, rute, numeUser }) {
   const [showDropdown, setShowDropdown] = useState(false);
-
   return (
     <NavbarContainer>
       <Logo src={logo} alt="Logo" />

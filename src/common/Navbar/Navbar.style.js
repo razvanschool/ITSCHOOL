@@ -42,6 +42,7 @@ export const RuteMobile = styled.div`
   flex-direction: column;
   width: 200px;
   height: 100vh;
+  z-index: 99;
 
   @media only screen and (min-width: 900px) {
     display: none;
