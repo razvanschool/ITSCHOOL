@@ -1,3 +1,4 @@
+// import { Link } from "react-router-dom";
 import { LinkCostumMobile, LogoDrop, RuteMobile } from "./Navbar.style";
 
 export default function Rute({ rute, logo, numeUser }) {
@@ -10,6 +11,7 @@ export default function Rute({ rute, logo, numeUser }) {
         </LinkCostumMobile>
       ))}
       <LogoDrop src={logo} alt="Logo" />
+      {/* <Link to={"/admin"}>admin</Link> */}
     </RuteMobile>
   );
 }

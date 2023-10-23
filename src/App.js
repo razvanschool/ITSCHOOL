@@ -21,15 +21,16 @@ function App() {
   // Initializam reducerul
   const [stateGlobal, dispatch] = useReducer(motoReducer, initialState);
 
-  const [stateGlobalContor, dispatchContor] = useReducer(
-    contorReducer,
-    initialStateContor
-  );
   // Cream valoarea pe care o vom pasa lui MotoContext.Provider.
   const motoContextValue = {
     stateGlobal,
     dispatch,
   };
+
+  const [stateGlobalContor, dispatchContor] = useReducer(
+    contorReducer,
+    initialStateContor
+  );
 
   const contorContextValue = {
     stateGlobalContor,
@@ -38,8 +39,8 @@ function App() {
 
   return (
     // Facem dissponibile catre intreaga aplicatie state-urile globale, precum si functiile ce modifica state-urile globale.
-    <MotoContext.Provider value={motoContextValue}>
-      <ContorContext.Provider value={contorContextValue}>
+    <ContorContext.Provider value={contorContextValue}>
+      <MotoContext.Provider value={motoContextValue}>
         <Routes>
           <Route path="/admin" element={<HomeAdmin />} />
           <Route path="/home" element={<HomeAdmin />} />
@@ -51,8 +52,8 @@ function App() {
           <Route path="/test" element={<Test />} />
           <Route path="/" element={<HomeAdmin />} />
         </Routes>
-      </ContorContext.Provider>
-    </MotoContext.Provider>
+      </MotoContext.Provider>
+    </ContorContext.Provider>
   );
 }
 

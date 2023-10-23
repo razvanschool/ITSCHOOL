@@ -2,25 +2,19 @@ import React, { useEffect, useState } from "react";
 import { ruteAdmin } from "../../constants/rute";
 import Navbar from "../Navbar/Navbar";
 import { ContainerEdit, ContainerButton } from "./EditMoto.style";
-import { Button, Form, Alert } from "react-bootstrap";
+import { Button, Form, Alert, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import useFetchMotos from "../../customHooks/useFetchMotos";
 
 const EditMoto = () => {
   const [form, setForm] = useState({});
 
   const { id } = useParams();
+  const { motos, loading } = useFetchMotos(`/${id}`);
+  console.log(form);
   useEffect(() => {
-    if (id) {
-      fetch(`http://localhost:3002/motors/${id}`)
-        .then((response) => response.json())
-        .then((moto) => {
-          setForm(moto);
-        })
-        .catch((error) => {
-          console.log("Error", error);
-        });
-    }
-  }, [id]);
+    setForm(motos);
+  }, [motos]);
 
   const [post, setPost] = useState("");
   const [error, setError] = useState(false);
@@ -74,6 +68,11 @@ const EditMoto = () => {
             </div>
           </Alert>
         </div>
+        {loading && (
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        )}
         <div>
           <Form style={{ width: "100%" }}>
             {Object.keys(form).map((key, index) =>

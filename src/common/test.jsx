@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 
 import { ruteAdmin } from "../constants/rute";
 import Navbar from "./Navbar/Navbar";
@@ -9,19 +9,32 @@ import { contorMinus, contorPlus } from "../store/Motos/Contor/actionsContor";
 const Test = () => {
   //const [contorValue, setContorValue] = useState(0);
   const { stateGlobalContor, dispatchContor } = useContext(ContorContext);
-  console.log(stateGlobalContor);
+
   const handlePlus = () => {
     const actionPlus = contorPlus(4);
     dispatchContor(actionPlus); // ispatchContor(contorPlus());
     console.log("plus");
   };
   const handleMinus = () => {
-    const actionMinus = contorMinus();
+    const actionMinus = contorMinus(7);
     dispatchContor(actionMinus);
     console.log("minus");
   };
 
-  const { contorValue } = stateGlobalContor;
+  const handlePlusLocal = () => {
+    setContorul(contorul + 1);
+  };
+  const handleMinusLocal = () => {
+    setContorul(contorul - 1);
+  };
+
+  const { contorValue } = stateGlobalContor; // const  contorValue  = stateGlobalContor.contorValue;
+
+  const [contorul, setContorul] = useState(0);
+
+  useEffect(() => {
+    console.log(contorul);
+  }, [contorul]);
 
   return (
     <div>
@@ -34,6 +47,13 @@ const Test = () => {
         {"  "} Produse adaugate in cos: {contorValue}
         {"  "}
         <Button onClick={handlePlus}>+</Button>
+      </div>
+
+      <div style={{ background: "#5d0303", color: "#fff", padding: "50px" }}>
+        <Button onClick={handleMinusLocal}>-</Button>
+        {"  "} Produse adaugate in cos: {contorul}
+        {"  "}
+        <Button onClick={handlePlusLocal}>+</Button>
       </div>
     </div>
   );
